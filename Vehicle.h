@@ -24,6 +24,6 @@ public:
 	virtual ~Vehicle() = default;
 
 
-	std::string GetInfo();
+	virtual std::string GetInfo() = 0;
 };
 

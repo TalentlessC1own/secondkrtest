@@ -7,6 +7,7 @@ void ConsoleInput(std::vector<std::shared_ptr<Airplane>>& VehicleCase)
 	int moshnost = 0;
 	int scor = 0;
 	std::string mod;
+	std::string name;
 	std::string nametype = "";
 	int countofseats = 0;				//pole transport classa
 	int countofbombs = 0;				//pole military classa
@@ -26,6 +27,9 @@ void ConsoleInput(std::vector<std::shared_ptr<Airplane>>& VehicleCase)
 			nametype = "Military plane";
 			std::cout << nametype << std::endl << std::endl;
 
+			std::cout << "Enter model of plane:" << std::endl << std::endl;
+			std::cin >> mod;
+
 			std::cout << "Weight: " << std::endl << std::endl;
 			ves = CheckIntValue();
 
@@ -35,16 +39,22 @@ void ConsoleInput(std::vector<std::shared_ptr<Airplane>>& VehicleCase)
 			std::cout << "Speed: " << std::endl << std::endl;
 			scor = CheckIntValue();
 
-			std::cout << "Enter model of plane:" << std::endl << std::endl;
-			std::cin >> mod;
+			std::cout << "Count of bombs:" << std::endl << std::endl;
+			countofbombs = CheckIntValue();
 
-			VehicleCase.emplace_back(std::make_shared<Mlrt_Trnsp>(nametype,ves,moshnost,scor, mod));
+			
+
+			VehicleCase.emplace_back(std::make_shared<Mlrt_Trnsp>(nametype, mod, ves,moshnost,scor,countofbombs));
 			break;
 		}
 		case PlaneType:: Trnsp:
 		{
 			nametype = "Transport plane";
-			std::cout << nametype << std::endl;
+			std::cout << nametype << std::endl << std::endl;
+
+			std::cout << "Enter model of plane:" << std::endl << std::endl;
+			std::cin >> mod;
+
 			std::cout << "Weight: " << std::endl << std::endl;
 			ves = CheckIntValue();
 
@@ -54,10 +64,10 @@ void ConsoleInput(std::vector<std::shared_ptr<Airplane>>& VehicleCase)
 			std::cout << "Speed: " << std::endl << std::endl;
 			scor = CheckIntValue();
 
-			std::cout << "Enter model of plane:" << std::endl << std::endl;
-			std::cin >> mod;
+			std::cout << "Count of seats:" << std::endl << std::endl;
+			countofseats = CheckIntValue();
 
-			VehicleCase.emplace_back(std::make_shared<TransportPlane>(nametype, ves, moshnost, scor, mod));
+			VehicleCase.emplace_back(std::make_shared<TransportPlane>(nametype, mod, ves, moshnost, scor,countofseats));
 			break;
 		}
 		case PlaneType::Enough:
@@ -94,6 +104,8 @@ void FileInput(std::vector<std::shared_ptr<Airplane>>& VehicleCase)
 		int scor = 0;
 		std::string nametype = "";
 		std::string mod{};
+		int countOfBombs = 0;
+		int countOfSeats = 0;
 
 		int count = 0;
 			try
@@ -112,7 +124,18 @@ void FileInput(std::vector<std::shared_ptr<Airplane>>& VehicleCase)
 					std::cout << "Speed: " << scor << std::endl;
 					std::cout << "Model: " << mod << std::endl;
 
-					VehicleCase.emplace_back(std::make_shared<Mlrt_Trnsp>(nametype, ves, moshnost, scor, mod));
+					if (nametype == "Military plane")
+					{
+						countOfBombs = CheckLineInt(file);
+						VehicleCase.emplace_back(std::make_shared<Mlrt_Trnsp>(nametype, mod, ves, moshnost, scor, countOfBombs));
+					}
+					else if (nametype == "Transport plane")
+					{
+						countOfSeats = CheckLineInt(file);
+						VehicleCase.emplace_back(std::make_shared<TransportPlane>(nametype,mod, ves, moshnost, scor,countOfSeats));
+					}
+
+					
 				}
 			}
 			catch (std::invalid_argument iaex)

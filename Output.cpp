@@ -33,7 +33,14 @@ void InitialDataOutput(std::vector<std::shared_ptr<Airplane>>& VehicleCase)
 		fileRecorder << VehicleCase[i]->GetMotorPower() << std::endl;
 		fileRecorder << VehicleCase[i]->GetSpeed() << std::endl;
 		fileRecorder << VehicleCase[i]->Model() << std::endl;
-
+		if (std::static_pointer_cast<Airplane>(VehicleCase[i])->VehicleName() == "Military plane")
+		{
+			fileRecorder << std::static_pointer_cast<Mlrt_Trnsp>(VehicleCase[i])->GetCountOfBombs();
+		}
+		else
+		{
+			fileRecorder << std::static_pointer_cast<TransportPlane>(VehicleCase[i])->GetCountOfSeats();
+		}
 	}
 	std::cout << "File succsesfull saved" << std::endl;
 	fileRecorder.close();

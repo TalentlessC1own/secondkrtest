@@ -69,12 +69,14 @@ int main()
 		{
 		case HowToInput::ByConsole:
 		{
+			VehicleCase.clear();
 			ConsoleInput(VehicleCase);
 			InitialDataOutput(VehicleCase);
 			break;
 		}
 		case HowToInput::ByFile:
 			{
+			VehicleCase.clear();
 				FileInput(VehicleCase);
 				break;
 			}

@@ -10,10 +10,11 @@ protected:
 	std::string model;
 
 public:
-	Airplane(int WeightValue, int MotorPowerValue, int SpeedValue, std::string nameModel)
-		:Vehicle(WeightValue, MotorPowerValue, SpeedValue), model(nameModel)
+	Airplane(std::string valueName,int WeightValue, int MotorPowerValue, int SpeedValue, std::string nameModel)
+		:name(valueName),Vehicle(WeightValue, MotorPowerValue, SpeedValue), model(nameModel)
 	{}
 
+	virtual std::string GetInfo() override = 0;
 	Airplane() = default;
 	std::string VehicleName() override;
 	std::string Model();
