@@ -100,16 +100,17 @@ int main()
 			case SubMenu::Military:
 			{
 				list.clear();
-				std::string name{};
-				int weight{};
-				int power{};
-				int speed{};
+				//std::string name{};
+				//int weight{};
+				//int power{};
+				//int speed{};
+				//int bombs{};
 				std::string model{};
 				for (int i = 0; i < VehicleCase.size(); i++)
 				{
 					if (VehicleCase[i]->VehicleName() == "Military plane")
 					{
-						name = VehicleCase[i]->VehicleName();
+						/*name = VehicleCase[i]->VehicleName();
 						weight = VehicleCase[i]->GetWeight();
 						power = VehicleCase[i]->GetMotorPower();
 						speed = VehicleCase[i]->GetSpeed();
@@ -119,7 +120,9 @@ int main()
 						std::cout << "Weight: " << weight << std::endl;
 						std::cout << "Motor Power:" << power << std::endl;
 						std::cout << "Speed: " << speed << std::endl;
-						std::cout << "Model:" << model << std::endl << std::endl;
+						std::cout << "Model:" << model << std::endl << std::endl;*/
+
+						std::cout << "\n" << VehicleCase[i]->GetInfo() << std::endl;
 
 						list.emplace_back(VehicleCase[i]);
 
@@ -133,15 +136,15 @@ int main()
 			{
 				list.clear();
 				std::string name{};
-				int weight{};
-				int power{};
-				int speed{};
-				std::string model{};
+				//int weight{};
+				//int power{};
+				//int speed{};
+				//std::string model{};
 				for (int i = 0; i < VehicleCase.size(); i++)
 				{
 					if (VehicleCase[i]->VehicleName() == "Transport plane")
 					{
-						name = VehicleCase[i]->VehicleName();
+						/*name = VehicleCase[i]->VehicleName();
 						weight = VehicleCase[i]->GetWeight();
 						power = VehicleCase[i]->GetMotorPower();
 						speed = VehicleCase[i]->GetSpeed();
@@ -151,7 +154,9 @@ int main()
 						std::cout << "Weight: " << weight << std::endl;
 						std::cout << "Motor Power:" << power << std::endl;
 						std::cout << "Speed: " << speed << std::endl;
-						std::cout << "Model:" << model << std::endl << std::endl;
+						std::cout << "Model:" << model << std::endl << std::endl;*/
+
+						std::cout << "\n" << VehicleCase[i]->GetInfo() << std::endl;
 
 						list.emplace_back(VehicleCase[i]);
 
@@ -165,19 +170,19 @@ int main()
 			{
 				std::string ModelYouWant = "";
 				std::cout << "Enter whished model of plane:" << std::endl;
-				std::cin >> ModelYouWant;
+				std::getline(std::cin, ModelYouWant);
 				std::cout << std::endl;
 				list.clear();
-				std::string name{};
-				int weight{};
-				int power{};
-				int speed{};
-				std::string model{};
+				//std::string name{};
+				//int weight{};
+				//int power{};
+				//int speed{};
+				//std::string model{};
 				for (int i = 0; i < VehicleCase.size(); i++)
 				{
 					if (VehicleCase[i]->Model() == ModelYouWant)
 					{
-						name = VehicleCase[i]->VehicleName();
+						/*(name = VehicleCase[i]->VehicleName();
 						weight = VehicleCase[i]->GetWeight();
 						power = VehicleCase[i]->GetMotorPower();
 						speed = VehicleCase[i]->GetSpeed();
@@ -187,7 +192,9 @@ int main()
 						std::cout << "Weight: " << weight << std::endl;
 						std::cout << "Motor Power:" << power << std::endl;
 						std::cout << "Speed: " << speed << std::endl;
-						std::cout << "Model:" << model << std::endl << std::endl;
+						std::cout << "Model:" << model << std::endl << std::endl;*/
+
+						std::cout << "\n" << VehicleCase[i]->GetInfo() << std::endl;
 
 						list.emplace_back(VehicleCase[i]);
 

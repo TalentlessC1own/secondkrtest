@@ -28,7 +28,7 @@ void ConsoleInput(std::vector<std::shared_ptr<Airplane>>& VehicleCase)
 			std::cout << nametype << std::endl << std::endl;
 
 			std::cout << "Enter model of plane:" << std::endl << std::endl;
-			std::cin >> mod;
+			std::getline(std::cin, mod);
 
 			std::cout << "Weight: " << std::endl << std::endl;
 			ves = CheckIntValue();
@@ -53,7 +53,7 @@ void ConsoleInput(std::vector<std::shared_ptr<Airplane>>& VehicleCase)
 			std::cout << nametype << std::endl << std::endl;
 
 			std::cout << "Enter model of plane:" << std::endl << std::endl;
-			std::cin >> mod;
+			std::getline(std::cin, mod);
 
 			std::cout << "Weight: " << std::endl << std::endl;
 			ves = CheckIntValue();
@@ -87,7 +87,7 @@ void FileInput(std::vector<std::shared_ptr<Airplane>>& VehicleCase)
 	{
 
 		std::cout << "Enter file name. " << std::endl << "ENTER : ";
-		std::cin >> fileName;
+		std::getline(std::cin, fileName);
 		try
 		{
 			file.open(fileName);
@@ -118,7 +118,7 @@ void FileInput(std::vector<std::shared_ptr<Airplane>>& VehicleCase)
 					moshnost = CheckLineInt(file);
 					scor = CheckLineInt(file);
 					mod = CheckLineString(file);
-					std::cout << nametype << std::endl << std::endl;
+					std::cout << nametype << std::endl;
 					std::cout << "Weight: " << ves << std::endl;
 					std::cout << "Motor Power: " << moshnost << std::endl;
 					std::cout << "Speed: " << scor << std::endl;
@@ -128,14 +128,16 @@ void FileInput(std::vector<std::shared_ptr<Airplane>>& VehicleCase)
 					{
 						countOfBombs = CheckLineInt(file);
 						VehicleCase.emplace_back(std::make_shared<Mlrt_Trnsp>(nametype, mod, ves, moshnost, scor, countOfBombs));
+						std::cout << "Count of bombs:" << countOfBombs << std::endl;
 					}
 					else if (nametype == "Transport plane")
 					{
 						countOfSeats = CheckLineInt(file);
 						VehicleCase.emplace_back(std::make_shared<TransportPlane>(nametype,mod, ves, moshnost, scor,countOfSeats));
+						std::cout << "Count of seats:" << countOfSeats << std::endl;
 					}
 
-					
+					std::cout << std::endl << std::endl;
 				}
 			}
 			catch (std::invalid_argument iaex)

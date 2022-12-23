@@ -8,7 +8,7 @@ int CheckIntValue()
 	while (true)
 	{
 		std::cout << "ENTER : ";
-		std::cin >> valueInput;
+		std::getline(std::cin, valueInput);
 		std::cout << std::endl;
 		try
 		{
@@ -115,8 +115,6 @@ int CheckLineInt(std::ifstream& file)
 std::ofstream CheckFileOutput()
 {
 
-	std::cin.clear();
-	std::cin.ignore();
 	const int thisFile = 1;
 	std::string name;
 	std::ofstream  FileRecorder;

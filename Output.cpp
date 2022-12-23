@@ -18,6 +18,7 @@ void FileOutput(std::vector<std::shared_ptr<Airplane>>& VehicleCase)
 
 void InitialDataOutput(std::vector<std::shared_ptr<Airplane>>& VehicleCase)   
 {
+	;
 	std::cout << "Save initial data ?\n1 - Yes\n2 - No" << std::endl;
 	if (CheckMenuItem(2) != 1)
 		return;
@@ -35,11 +36,11 @@ void InitialDataOutput(std::vector<std::shared_ptr<Airplane>>& VehicleCase)
 		fileRecorder << VehicleCase[i]->Model() << std::endl;
 		if (std::static_pointer_cast<Airplane>(VehicleCase[i])->VehicleName() == "Military plane")
 		{
-			fileRecorder << std::static_pointer_cast<Mlrt_Trnsp>(VehicleCase[i])->GetCountOfBombs();
+			fileRecorder << std::static_pointer_cast<Mlrt_Trnsp>(VehicleCase[i])->GetCountOfBombs() << std::endl;;
 		}
 		else
 		{
-			fileRecorder << std::static_pointer_cast<TransportPlane>(VehicleCase[i])->GetCountOfSeats();
+			fileRecorder << std::static_pointer_cast<TransportPlane>(VehicleCase[i])->GetCountOfSeats() << std::endl;;
 		}
 	}
 	std::cout << "File succsesfull saved" << std::endl;
